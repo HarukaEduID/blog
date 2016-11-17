@@ -22,3 +22,6 @@
 
 # Ignore IDEA-based IDE directory
 .idea
+
+# Ignore code coverage report directory
+/coverage
