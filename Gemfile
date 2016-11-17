@@ -50,4 +50,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :test do
   gem 'simplecov', :require => false
   gem 'minitest-rails-capybara'
+  gem 'rails-controller-testing'
 end
