@@ -22,6 +22,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to article_path(Article.last)
   end
 
+  test 'should show back the form' do
+    post articles_url, params: { article: { text: @article.text } }
+
+    assert_template 'articles/new'
+  end
+
   test 'should show article' do
     get article_url(@article)
     assert_response :success
