@@ -22,9 +22,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to article_path(Article.last)
   end
 
-  test 'should show back the form' do
+  test 'should show the new article form' do
     post articles_url, params: { article: { text: @article.text } }
-
     assert_template 'articles/new'
   end
 
@@ -36,5 +35,22 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test 'should get index' do
     get articles_url
     assert_response :success
+  end
+
+  test 'should get edit' do
+    get edit_article_url(@article)
+    assert_equal @article, assigns(:article)
+  end
+
+  test 'should update article' do
+    patch article_url(@article), params: { article: { title: 'updated' } }
+    assert_redirected_to article_path(@article)
+    @article.reload
+    assert_equal 'updated', @article.title
+  end
+
+  test 'should show the edit article form' do
+    patch article_url(@article), params: { article: { text: @article.text, title: nil } }
+    assert_template 'articles/edit'
   end
 end
