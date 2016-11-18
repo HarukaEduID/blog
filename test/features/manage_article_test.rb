@@ -19,4 +19,10 @@ class ManageArticleTest < Capybara::Rails::TestCase
     assert page.must_have_content "Title can't be blank"
     assert page.must_have_content "Title is too short (minimum is 5 characters)"
   end
+
+  test 'can access edit from show' do
+    visit article_path(articles(:one))
+    click_link 'Edit'
+    assert page.has_current_path? edit_article_path(articles(:one))
+  end
 end
