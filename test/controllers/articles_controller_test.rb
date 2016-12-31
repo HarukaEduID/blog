@@ -17,14 +17,14 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 	test 'should create article' do
 		assert_difference('Article.count') do
 			post articles_url,
-					 params: { article: { text: @article.text, title: @article.title } }
+					 params: { article: { text_md: @article.text_md, title: @article.title } }
 		end
 
 		assert_redirected_to article_path(Article.last)
 	end
 
 	test 'should show the new article form' do
-		post articles_url, params: { article: { text: @article.text } }
+		post articles_url, params: { article: { text_md: @article.text_md } }
 		assert_template 'articles/new'
 	end
 
@@ -60,7 +60,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
 	test 'should show the edit article form' do
 		patch article_url(@article),
-					params: { article: { text: @article.text, title: nil } }
+					params: { article: { text_md: @article.text_md, title: nil } }
 		assert_template 'articles/edit'
 	end
 end

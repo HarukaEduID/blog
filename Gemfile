@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'trix', '0.9.7'
 gem 'redcarpet', '3.2.2'
 
 group :development, :test do
